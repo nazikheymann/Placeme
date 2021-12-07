@@ -1,0 +1,96 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700|Poppins:400,500&display=swap');
+
+body{
+    background-image: url("DSC_0251.JPG");
+    opacity: 0.9;
+    background-color: white;
+    background-size: cover;
+} 
+
+  /* .content{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 999;
+    text-align: center;
+    padding: 60px 32px;
+    transform: translate(-50%,-50%);
+    background: rgba(0, 0, 0, 0.6);
+    box-shadow: -1px 4px 28px 0px rgba(0,0,0,0.75);
+}
+.content header{
+    color: white;
+    font-size: 33px;
+    font-weight: 600;
+    margin: 0 0 35px 0;
+    font-family: 'Montserrat',sans-serif;
+}
+
+label {
+	display: flex;
+    justify-content: start;
+	margin-bottom: 5px;
+    color: white;
+    font-size: large;
+}
+  .field{
+    position: relative;
+    height: 45px;
+    width: 100%;
+    display: flex;
+    background: rgba(255,255,255,0.94);
+}
+
+.field input{
+    height: 100%;
+    width: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #222;
+    font-size: 16px;
+    font-family: 'Poppins',sans-serif;
+}
+
+.field small {
+	color: #e74c3c;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	visibility: hidden;
+}
+
+.form input[type="submit"], .login-btn{
+	background-color: #8e44ad;
+	border: 2px solid #8e44ad;
+	border-radius: 4px;
+	color: #fff;
+	display: block;
+	font-family: inherit;
+	font-size: 16px;
+	padding: 10px;
+	margin-top: 20px;
+	width: 60%;
+}
+
+.buttonholder{
+    display: flex;
+    justify-content: center;
+}
+
+.account{
+    font-size: 15px;
+    color: white;
+    font-family: 'Poppins',sans-serif;
+}
+.account a{
+    color: #3498db;
+    text-decoration: none;
+}
+.account a:hover{
+    text-decoration: underline;
+} */
+
+.row{
+    background-color: white;
+}
