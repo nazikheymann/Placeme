@@ -14,16 +14,16 @@
         <div class="content">
            <!-- <img id = "ashesi_logo" src="https://www.ashesi.edu.gh/images/logo-mobile.png"> -->
            <header>Welcome to Place Me</header>
-           <form action="Homepage.php" method="post">
+           <form action="login_process.php" method="post">
               <div class="field">
-                 <input type="text" required placeholder=" Index number">
+                 <input type="text" required placeholder=" Index number" name = "id_no">
               </div><br>
               <div class="field">
                  <span class="fa fa-user"></span>
-                 <input type="password" required placeholder=" Password">
+                 <input type="password" required placeholder=" Password" name = "password">
               </div><br>
               <div class="buttonholder">
-                 <input class = "login-btn" type="submit" value="Login">
+                 <input class = "login-btn" type="submit" value="Login" name="submit">
                  <a href="Homepage.php"></a>
               </div>
            </form>

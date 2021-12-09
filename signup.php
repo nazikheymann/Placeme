@@ -1,57 +1,46 @@
 <?php
+// Include file which makes the
+    // Database Connection.    
+include 'placeme_connection_test.php'; 
     
-$showAlert = false; 
-$showError = false; 
-$exists=false;
-    
-if($_SERVER["REQUEST_METHOD"] == "POST") {
-      
-    // Include file which makes the
-    // Database Connection.
-    include 'placeme_connection_test.php';   
-    
-    $fname = $_POST["fname"]; 
+if(isset($_POST["submit"])) {
+
+
+    $fname = $_POST["fname"];
+     
     $lname = $_POST["lname"]; 
 	$id_no = $_POST["id_no"];
-	$password = $_POST["password"];
-    $password2 = $_POST["password2"];
+	$password = md5($_POST["password"]);
+    
+    ;
             
-    
-    $sql = "Select * from candidate where candidateID ='$id_no'";
-    
+    $sql = "INSERT INTO `candidate` ( `candidateID`, `fname`,`lname`,`user_password`) VALUES ('$id_no', '$fname', '$lname', '$password')";
     $result = mysqli_query($connect, $sql);
-    
-    $num = mysqli_num_rows($result); 
-    
-    // This sql query is use to check if
-    // the username is already present 
-    // or not in our Database
-    if($num == 0) {
-        if(($password == $password2) && $exists==false) {
-    
-            $hash = password_hash($password, 
-                                PASSWORD_DEFAULT);
-                
-            // Password Hashing is used here. 
-            $sql = "INSERT INTO `candidate` ( `candidateID`, `fname`,`lname`,`user_password`) VALUES ('$id_no', '$fname', '$lname', '$hash')";
-    
-            $result = mysqli_query($connect, $sql);
-    
-            if ($result) {
-                $showAlert = true; 
-            }
-        } 
-        else { 
-            $showError = "Passwords do not match"; 
-        }      
-    }// end if 
-    
-   if($num>0) 
-   {
-      $exists="ID already in use"; 
-   } 
-    
-}//end if   
+    header("location: login.php");
+    //$log = mysqli_fetch_array($result);
+
+
+    // if(!empty($log)){
+    //     $hashpassword = md5($password);
+
+    //     if($hashpassword == $log['password']){
+
+    //         //redirect page 
+    //         header("location: homepage.php");
+    //         exit();
+    //     }
+    //     else{
+    //         echo "Oops! Something went wrong. Please try again later.";
+    //     }
+
+
+    // }
+
+
+
+mysqli_close($connect);
+
+}   
     
 ?>
 
@@ -65,9 +54,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     <link rel = "stylesheet" href="placeme.css">
 </head>
 <body>
+<!-- 
 
-<?php
-    
+
     if($showAlert) {
     
         echo ' <div class="alert alert-success 
@@ -107,7 +96,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
        </div> '; 
      }
    
-?>
+ -->
 
 
 
@@ -115,42 +104,41 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         <div class="container-fluid">
                     <div class="bg-img">
                         <div class="content">
-                            <!-- <img id = "ashesi_logo" src="https://www.ashesi.edu.gh/images/logo-mobile.png"> -->
                             <header>Welcome to Place Me</header>
-	<form id="form" class="form" action="login.php" method="post">
+
+	<form id="form" class="form" action="" method="post">
 		<div class="field">
-			<input type="text" placeholder=" First Name" id="fname" />
+			<input type="text" placeholder=" First Name" id="fname" name = "fname"/>
 			<i class="fas fa-check-circle"></i>
 			<i class="fas fa-exclamation-circle"></i>
-			<small>Error message</small>
+			<!-- <small>Error message</small> -->
 		</div><br>
         <div class="field">
-			<input type="text" placeholder=" Last Name" id="lname" />
+			<input type="text" placeholder=" Last Name" id="lname" name ="lname"/>
 			<i class="fas fa-check-circle"></i>
 			<i class="fas fa-exclamation-circle"></i>
-			<small>Error message</small>
+			<!-- <small>Error message</small> -->
 		</div><br>
 		<div class="field">
-			<input type="text" placeholder=" Index number" id="id_no" />
+			<input type="text" placeholder=" Index number" id="id_no" name = "id_no"/>
 			<i class="fas fa-check-circle"></i>
 			<i class="fas fa-exclamation-circle"></i>
-			<small>Error message</small>
+			<!-- <small>Error message</small> -->
 		</div><br>
 		<div class="field">
-			<input type="password" placeholder=" Password" id="password"/>
+			<input type="password" placeholder=" Password" id="password" name = "password"/>
 			<i class="fas fa-check-circle"></i>
 			<i class="fas fa-exclamation-circle"></i>
-			<small>Error message</small>
+			<!-- <small>Error message</small> -->
 		</div><br>
 		<div class="field">
-			<input type="password" placeholder=" Confirm Password" id="password2"/>
+			<input type="password" placeholder=" Confirm Password" id="password2" name = "password2"/>
 			<i class="fas fa-check-circle"></i>
 			<i class="fas fa-exclamation-circle"></i>
-			<small>Error message</small>
+			<!-- <small>Error message</small> -->
 		</div><br>
         <div class="buttonholder">
-		<input type="submit" value="Sign Up">
-        <a href="login.php"></a>
+		<input type="submit" name ="submit" value="Sign Up">
         </div>
 	</form>
     <div class="account">

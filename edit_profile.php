@@ -27,9 +27,10 @@
                 <div class="d-flex justify-content-between align-items-center mb-3">
                     <h4 class="text-right">Profile Settings</h4>
                 </div>
+                <div>
                 <div class="row mt-2">
-                    <div class="col-md-6"><label class="labels">Name</label><input type="text" class="form-control" placeholder="first name" value=""></div>
-                    <div class="col-md-6"><label class="labels">Last Name</label><input type="text" class="form-control" value="" placeholder="surname"></div>
+                    <div class="col-md-6"><label class="labels">Name</label><input type="text" class="form-control" placeholder="First name" value=""></div>
+                    <div class="col-md-6"><label class="labels">Last Name</label><input type="text" class="form-control" value="" placeholder="Last name"></div>
                 </div>
                 <div class="row mt-3">
                     <div class="col-md-12"><label class="labels">Email Address</label><input type="text" class="form-control" placeholder="enter email address" value=""></div>
@@ -37,7 +38,7 @@
                     <div class="col-md-12"><label class="labels">First Choice School</label><input type="text" class="form-control" placeholder="enter address line 2" value=""></div> -->
 
                     <?php
-                    echo '<break>';
+                    echo '<br>';
                     echo 'Current Institution: ';
                     echo '<select>
                     <option>Select</option>';
