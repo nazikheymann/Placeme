@@ -14,10 +14,10 @@
 </head>
 <body>
     <?php
-$rawscore = rand(300,540);
-echo 'Your rawscore is ' . $rawscore;
-
-echo '<br><br>';
+    $rawscore = rand(300,540);
+    echo 'Your rawscore is ' . $rawscore;
+    
+    echo '<br><br>';
 if ( in_array($rawscore, range(470,540)) ) {
     echo 'You got first choice';
 }

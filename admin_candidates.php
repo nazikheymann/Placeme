@@ -50,7 +50,6 @@
                                         echo "<td>" . $row['gender'] . "</td>";
                                         // echo "<td>" . $row['rawscore'] . "</td>";
                                         echo "<td>";
-                                            echo '<a href="update.php?candidateID='. $row['candidateID'] .'" class="mr-3" title="Update Record" data-toggle="tooltip"><span class="fa fa-pencil"></span></a>';
                                             echo '<a href="delete.php?candidateID='. $row['candidateID'] .'" title="Delete Record" data-toggle="tooltip"><span class="fa fa-trash"></span></a>';
                                         echo "</td>";
                                     echo "</tr>";

@@ -1,3 +1,6 @@
+<?php
+require('login_process.php');
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,6 +17,9 @@
         <div class="content">
            <!-- <img id = "ashesi_logo" src="https://www.ashesi.edu.gh/images/logo-mobile.png"> -->
            <header>Welcome to Place Me</header>
+           <h2 style="color: red"> <?php if (isset($_GET['login_error'])) {
+                               echo $_GET['login_error'];
+                           } ?></h2> 
            <form action="login_process.php" method="post">
               <div class="field">
                  <input type="text" required placeholder=" Index number" name = "id_no">

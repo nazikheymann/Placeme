@@ -16,7 +16,7 @@ if(isset($_POST["submit"])) {
 
     if($password != $confirm_password)
     {
-        header("location: signup.php?error=Passwords do not match");
+        header("location: signup_testing.php?error=Passwords do not match");
        exit();
     }
 
@@ -25,7 +25,7 @@ if(isset($_POST["submit"])) {
     $result1 = mysqli_query($connect,$id_check);
     $row = mysqli_fetch_assoc($result1);
      if(isset($row['candidateID'])){
-        header("location: signup.php?error=ID already exists");
+        header("location: signup_testing.php?error=ID already exists");
         exit();
     }
     else{

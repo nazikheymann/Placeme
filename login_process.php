@@ -18,13 +18,16 @@ if(isset($_POST["submit"])) {
             $_SESSION['id'] = $login_details['candidateID'];
             header("location: homepage.php");
         }
+
         else{
-            echo 'Password is incorrect';
+            header("location: login.php?login_error=Incorrect Password");
         }
     }
     else{
-        echo 'Username is incorrect';
+        header("location: login.php?login_error=ID does not exist");
     }
+
+
 
 
 
