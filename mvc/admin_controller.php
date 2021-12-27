@@ -1,9 +1,9 @@
 <?php
 require ('admin_classes.php');
 
-function login($adminID){
+function login($candidateID){
     $instance = new login_class();
-    $query = $instance->return_user($adminID);
+    $query = $instance->return_user($candidateID);
 
     if($query){
         $array_var = array();

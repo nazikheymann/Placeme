@@ -4,7 +4,7 @@
 //first require credentials
 define("server", "localhost");
 define("username", "root");
-define("password", 'aniMallove33');
+define("password", '');
 define("database", "placeme_db");
 
 class Database{
