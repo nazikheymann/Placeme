@@ -36,7 +36,6 @@
                                         echo "<th>Index number</th>";
                                         echo "<th>First Name</th>";
                                         echo "<th>Last Name</th>";
-                                        echo "<th>Gender</th>";
                                         // echo "<th>Rawscore</th>";
                                         echo "<th>Action</th>";
                                     echo "</tr>";
@@ -47,7 +46,6 @@
                                         echo "<td>" . $row['candidateID'] . "</td>";
                                         echo "<td>" . $row['fname'] . "</td>";
                                         echo "<td>" . $row['lname'] . "</td>";
-                                        echo "<td>" . $row['gender'] . "</td>";
                                         // echo "<td>" . $row['rawscore'] . "</td>";
                                         echo "<td>";
                                             echo '<a href="delete.php?candidateID='. $row['candidateID'] .'" title="Delete Record" data-toggle="tooltip"><span class="fa fa-trash"></span></a>';

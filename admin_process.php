@@ -5,29 +5,33 @@ if(isset($_POST["submit"])) {
 
 
 
-	$admin_id_no = $_POST["admin_id_no"];
-	$admin_password = $_POST["admin_password"];
+	$id_no = $_POST["id_no"];
+	$password = md5($_POST["password"]);
     
-    $login_details = login($admin_id_no);
+    $login_details = login($id_no);
     print_r($login_details);
     if(!empty($login_details)) {
-        echo $admin_password;
-        echo $login_details['admin_password'];
-        if($password == $login_details['admin_password']){
+        echo $password;
+        echo $login_details['user_password'];
+        if($password == $login_details['user_password']){
             session_start();
-            $_SESSION['adminid'] = $login_details['adminID'];
+            $_SESSION['id'] = $login_details['candidateID'];
             header("location: admin_candidates.php");
         }
 
         else{
-            header("location: admin.php?admin_error=Incorrect Admin Password");  
+            header("location: admin.php?login_error=Incorrect Admin Password");
         }
     }
     else{
-        header("location: admin.php?admin_error=Incorrect Admin ID");
+        header("location: admin.php?login_error=Incorrect Admin ID");
     }
 
 
 
-} 
+
+
+
+
+}  
 ?>

@@ -16,16 +16,16 @@ if ($row_select = mysqli_fetch_assoc($result_user)) {
 }
 
 
-$user_select= "SELECT * FROM `user_selection` WHERE `candidateID`= '$id'";
-$result_user_profile = mysqli_query($connect,$user_select);
+// $user_select= "SELECT * FROM `user_selection` WHERE `candidateID`= '$id'";
+// $result_user_profile = mysqli_query($connect,$user_select);
 
-if($user_row = mysqli_fetch_array($result_user_profile)){
-   $current_school = $user_row['current_school'];
-    $first_choice = $user_row['first_choice'];
-    $second_choice = $user_row['second_choice'];
-    $third_choice = $user_row['third_choice'];
-    $fourth_choice = $user_row['fourth_choice']; 
-}
+// if($user_row = mysqli_fetch_array($result_user_profile)){
+//    $current_school = $user_row['current_school'];
+//     $first_choice = $user_row['first_choice'];
+//     $second_choice = $user_row['second_choice'];
+//     $third_choice = $user_row['third_choice'];
+//     $fourth_choice = $user_row['fourth_choice']; 
+// }
     
 
 
@@ -34,30 +34,23 @@ if($user_row = mysqli_fetch_array($result_user_profile)){
 
 
 if(isset($_POST["submit"])) {
-        // if the ID exists in the user_selection table but the user wants to edit the selected schools
-               
-            $edited_current_inst = $_POST['current_inst'];
-            $edited_first_choice = $_POST['first_choice'];
-            $edited_second_choice = $_POST['second_choice'];
-            $edited_third_choice = $_POST['third_choice'];
-            $edited_fourth_choice = $_POST['fourth_choice'];
+        $current_inst = $_POST['current_inst'];
+        $first_choice = $_POST['first_choice'];
+        $second_choice = $_POST['second_choice'];
+        $third_choice = $_POST['third_choice'];
+        $fourth_choice = $_POST['fourth_choice'];
 
-
-            $sql_updates = "UPDATE `user_selection` SET `current_school`= '$edited_current_inst',`first_choice`= '$edited_first_choice',`second_choice`= '$edited_second_choice',`third_choice`= '$edited_third_choice',`fourth_choice`= '$edited_fourth_choice' WHERE `candidateID` = '$id'";
-            $result3 = mysqli_query($connect, $sql_updates);
-            echo $edited_first_choice;
-            echo '<br>' . $edited_fourth_choice. '<br>';
-            if($result3){
-                header("location: homepage.php");
-            }
-            else{echo 'Could not update';}
-
-
-
-          }
         
-
-
+        $sql = "INSERT INTO `user_selection`(`candidateID`, `current_school`, `first_choice`, `second_choice`, `third_choice`, `fourth_choice`) 
+        VALUES ('$id','$current_inst','$first_choice','$second_choice','$third_choice','$fourth_choice')";
+        if($connect->query($sql) === true){
+             header("location: homepage.php");;
+        } else{
+            echo "ERROR: Could not able to execute $sql. " . $connect->error;
+        }
+         
+    
+    }
 ?>
 
 

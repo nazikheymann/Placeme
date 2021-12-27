@@ -49,43 +49,59 @@ if ($row_select=mysqli_fetch_assoc($result_user)) {
           <li>
               <a href="viewresults.php"><span class="fa fa-user mr-3"></span> View Results</a>
           </li>
+          <li class="active">
+                        <a href="logout.php"><span class="fa fa-sign-out"></span> Log Out</a>
+                    </li>
         </ul>
 
     	</nav>
 
         <!-- Page Content  -->
+        <!-- If institutions have not yet been selected, do not display the placed school -->
       <div id="content" class="p-4 p-md-5 pt-5">
 
       <?php
-    $rawscore = rand(300,540);
-    echo 'Your rawscore is ' . $rawscore;
-    
-    echo '<br><br>';
-if ( in_array($rawscore, range(470,540)) ) {
-    echo 'You got first choice';
-    echo '<br>';
-    echo 'You have been placed in ' . $first_choice;
-}
+      $id_check = "SELECT * FROM `user_selection` WHERE `candidateID` = '$id'";
+      $result1 = mysqli_query($connect,$id_check);
+      $row = mysqli_fetch_assoc($result1);
+      if(!isset($row['candidateID'])){
+        echo 'Please update profile first';
+        exit();
+      }
+      else{
+        $rawscore = rand(300,540);
+        echo 'Your rawscore is ' . $rawscore;
+        
+        echo '<br><br>';
+        
+        if ( in_array($rawscore, range(470,540)) ) {
+          echo 'You got first choice';
+          echo '<br>';
+          echo 'You have been placed in ' . $first_choice;
+        }
+        
+        else if ( in_array($rawscore, range(400,469)) ) {
+          echo 'You got second choice';
+          echo '<br>';
+          echo 'You have been placed in ' . $second_choice;
+        }
 
-else if ( in_array($rawscore, range(400,469)) ) {
-    echo 'You got second choice';
-    echo '<br>';
-    echo 'You have been placed in ' . $second_choice;
-}
+        else if ( in_array($rawscore, range(360,399)) ) {
+          echo 'You got third choice';
+          echo '<br>';
+          echo 'You have been placed in ' . $third_choice;
+        }
 
-else if ( in_array($rawscore, range(360,399)) ) {
-    echo 'You got third choice';
-    echo '<br>';
-    echo 'You have been placed in ' . $third_choice;
-}
+        else {
+          echo 'You got fourth choice';
+          echo '<br>';
+          echo 'You have been placed in ' . $fourth_choice;
+        }
 
-else {
-    echo 'You got fourth choice';
-    echo '<br>';
-    echo 'You have been placed in ' . $fourth_choice;
-}
+      }
+      
 
-
+  
 
 ?>
 

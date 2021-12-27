@@ -1,6 +1,3 @@
-<?php
-require('admin_process.php');
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,10 +13,7 @@ require('admin_process.php');
 <div class="bg-img">
         <div class="content">
            <header>Welcome to Place Me Admin</header>
-           <h2 style="color: red"> <?php if (isset($_GET['admin_error'])) {
-                               echo $_GET['admin_error'];
-                           } ?></h2> 
-           <form action="admin_process.php" method="post">
+           <form action="admin_candidates.php" method="post">
                  <div class="field">
                  <input type="text" required placeholder=" Admin ID" name = "admin_id_no">
               </div><br>

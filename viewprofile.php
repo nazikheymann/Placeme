@@ -5,8 +5,6 @@ $id=$_SESSION['id'];
 $sql_select= "SELECT * FROM `candidate` WHERE `candidateID`= '$id'";
 $result_user = mysqli_query($connect,$sql_select);
 
-$user_select= "SELECT * FROM `user_selection` WHERE `candidateID`= '$id'";
-$result_user_profile = mysqli_query($connect,$user_select);
 
 if ($row_select=mysqli_fetch_assoc($result_user)) {
   $fname= $row_select['fname']; 
@@ -14,15 +12,7 @@ if ($row_select=mysqli_fetch_assoc($result_user)) {
 
 }
 
-if ($user_row_select=mysqli_fetch_assoc($result_user_profile)) {
 
-
-    $current_school = $user_row_select['current_school'];
-    $first_choice = $user_row_select['first_choice'];
-    $second_choice = $user_row_select['second_choice'];
-    $third_choice = $user_row_select['third_choice'];
-    $fourth_choice = $user_row_select['fourth_choice'];
-  }
 
 ?>
 
@@ -54,9 +44,6 @@ if ($user_row_select=mysqli_fetch_assoc($result_user_profile)) {
                     </li>
                     <li>
                         <a href="viewresults.php"><span class="fa fa-user mr-3"></span> View Results</a>
-                    </li>
-                    <li class="active">
-                        <a href="logout.php"><span class="fa fa-sign-out"></span> Log Out</a>
                     </li>
                 </ul>
             </nav>
@@ -118,38 +105,10 @@ if ($user_row_select=mysqli_fetch_assoc($result_user_profile)) {
 
                                 echo '<br>';
 
-                        
+                                exit();
                             }
                             else{
-                                echo '<br>';
-                                echo 'Current Institution: ';
-                            
-                            
-                                echo '<br>';
-
-                                echo '<br>';
-
-                                echo ' 1st Choice School: ';
-
-                                echo '<br>';
-
-                                echo '<br>';
-
-                                echo '2nd Choice School: ';
-
-                                echo '<br>';
-
-                                echo '<br>';
-
-                                echo '3rd Choice School: ';
-
-                                echo '<br>';
-
-                                echo '<br>';
-
-                                echo '4th Choice School: ';
-
-                                echo '<br>';
+                                echo 'ID not in table';
                             }
                             
                             ?>
@@ -157,14 +116,7 @@ if ($user_row_select=mysqli_fetch_assoc($result_user_profile)) {
 
                     </div>
                     <div class="mt-5 text-center">
-                        <?php
-                        if (!isset($user_row_select['candidateID'])){
-                            echo '<a href="create_profile.php" class="btn btn-primary profile-button">Create Profile</a>';
-                        }
-                        else{
-                            echo '<a href="edit_profile.php" class="btn btn-primary profile-button">Edit Profile</a>';
-                        }
-                        ?>
+                    <a href="edit_profile.php" class="btn btn-primary profile-button">Edit Profile</a>
                     </div>
                 </div> 
             </div>

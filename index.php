@@ -14,14 +14,14 @@
 </head>
 <body>
 <nav class="navbar navbar-expand-md navbar-light  fixed-top py-0">
-		<a class="navbar-brand" href="landing-page.php"><h5 style=" margin-left:20px">Place Me</h5></a>
+		<a class="navbar-brand" href="index.php"><h5 style=" margin-left:20px">Place Me</h5></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
   	<span class="navbar-toggler-icon"></span>
   </button>
   <div class="navbar navbar-collapse justify-content-end"  id="navbarResponsive">
   	<ul class="navbar-nav">
   		<li class="nav-item">
-  			<a href="landing-page.php" class="nav-link">Home</a>
+  			<a href="index.php" class="nav-link">Home</a>
   		</li>
   		<li class="nav-item">
   			<a href="login.php" class="nav-link">Login</a>

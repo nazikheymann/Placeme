@@ -16,16 +16,16 @@ if ($row_select = mysqli_fetch_assoc($result_user)) {
 }
 
 
-$user_select= "SELECT * FROM `user_selection` WHERE `candidateID`= '$id'";
-$result_user_profile = mysqli_query($connect,$user_select);
+// $user_select= "SELECT * FROM `user_selection` WHERE `candidateID`= '$id'";
+// $result_user_profile = mysqli_query($connect,$user_select);
 
-if($user_row = mysqli_fetch_array($result_user_profile)){
-   $current_school = $user_row['current_school'];
-    $first_choice = $user_row['first_choice'];
-    $second_choice = $user_row['second_choice'];
-    $third_choice = $user_row['third_choice'];
-    $fourth_choice = $user_row['fourth_choice']; 
-}
+// if($user_row = mysqli_fetch_array($result_user_profile)){
+//    $current_school = $user_row['current_school'];
+//     $first_choice = $user_row['first_choice'];
+//     $second_choice = $user_row['second_choice'];
+//     $third_choice = $user_row['third_choice'];
+//     $fourth_choice = $user_row['fourth_choice']; 
+// }
     
 
 
@@ -34,30 +34,47 @@ if($user_row = mysqli_fetch_array($result_user_profile)){
 
 
 if(isset($_POST["submit"])) {
+    $current_inst = $_POST['current_inst'];
+    $first_choice = $_POST['first_choice'];
+    $second_choice = $_POST['second_choice'];
+    $third_choice = $_POST['third_choice'];
+    $fourth_choice = $_POST['fourth_choice'];
+
+    // $sql_update = "INSERT INTO `user_selection` (`candidateID`, `current_school`, `first_choice`, `second_choice`, `third_choice`, `fourth_choice`) 
+    // VALUES ('$id','$current_inst','$first_choice','$second_choice','$third_choice','$fourth_choice') ON DUPLICATE KEY UPDATE `current_school` = '$current_inst', `first_choice` = '$first_choice',
+    // `second_choice` = '$second_choice', `third_choice` = '$third_choice', `fourth_choice` = '$fourth_choice'"; 
+ 
+    $sql_update1 = "SELECT * FROM `user_selection` WHERE `candidateID` = $id";
+    $result1 = mysqli_query($connect, $sql_update1);
+    
+    
+    if(mysqli_num_rows($result1)){
+       $sql_update2 = "INSERT INTO `user_selection` (`candidateID`, `current_school`, `first_choice`, `second_choice`, `third_choice`, `fourth_choice`) VALUES ('$id','$current_inst','$first_choice','$second_choice','$third_choice','$fourth_choice')";
+       $result2 = mysqli_query($connect, $sql_update2);
+       if($result2){echo 'Records inserted successfully';}
+       else{echo 'Records not inserted';}
+
+    }
+    else{
+        $sql_update3 = "UPDATE `user_selection` SET `current_school`= '$current_inst',`first_choice`= '$first_choice',`second_choice`= '$second_choice',`third_choice`= '$third_choice',`fourth_choice`= '$fourth_choice' WHERE `candidateID` = '$id'";
+        $result3 = mysqli_query($connect, $sql_update3);
+        if($result3){
+            echo 'Records updated';
+        }
+        else{echo 'Records not updated';}
+    }
+    
+    
+            // header("location: homepage.php");
+
+
         // if the ID exists in the user_selection table but the user wants to edit the selected schools
                
-            $edited_current_inst = $_POST['current_inst'];
-            $edited_first_choice = $_POST['first_choice'];
-            $edited_second_choice = $_POST['second_choice'];
-            $edited_third_choice = $_POST['third_choice'];
-            $edited_fourth_choice = $_POST['fourth_choice'];
 
-
-            $sql_updates = "UPDATE `user_selection` SET `current_school`= '$edited_current_inst',`first_choice`= '$edited_first_choice',`second_choice`= '$edited_second_choice',`third_choice`= '$edited_third_choice',`fourth_choice`= '$edited_fourth_choice' WHERE `candidateID` = '$id'";
-            $result3 = mysqli_query($connect, $sql_updates);
-            echo $edited_first_choice;
-            echo '<br>' . $edited_fourth_choice. '<br>';
-            if($result3){
-                header("location: homepage.php");
-            }
-            else{echo 'Could not update';}
-
-
-
-          }
         
 
 
+    }
 ?>
 
 
@@ -85,16 +102,13 @@ if(isset($_POST["submit"])) {
                       <span class="sr-only">Toggle Menu</span>
                     </button>
                 </div>
-                <h1><a href="index.php" class="logo">Place Me</a></h1>
+                <h1><a href="landing-page.php" class="logo">Place Me</a></h1>
                 <ul class="list-unstyled components mb-5">
                     <li class="active">
                         <a href="homepage.php"><span class="fa fa-user mr-3"></span> Profile</a>
                     </li>
                     <li>
                         <a href="viewresults.php"><span class="fa fa-user mr-3"></span> View Results</a>
-                    </li>
-                    <li class="active">
-                        <a href="logout.php"><span class="fa fa-sign-out"></span> Log Out</a>
                     </li>
                 </ul>
             </nav>
@@ -212,3 +226,4 @@ if(isset($_POST["submit"])) {
         <script src="js/main.js"></script>
     </body>
 </html>
+
